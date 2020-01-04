@@ -1,6 +1,7 @@
 <template>
 	<div class="center-content">
 		<logo></logo>
+		<magic-button></magic-button>
 	</div>
 </template>
 

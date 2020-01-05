@@ -1,11 +1,22 @@
 # star-wars-web-client
 
+This repository contains a project acts as a web client 
+to consume Star Wars statistics APIs
+
+##Download Project
+
+`Clone the repository to your local directory`
+
+`cd my-projec/`
+
 ## Project setup
 ```
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
+
+It should being served on `http://localhost:8080/`
 ```
 yarn serve
 ```
@@ -21,4 +32,4 @@ yarn lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Please update your web service endpoint in `env.js` file

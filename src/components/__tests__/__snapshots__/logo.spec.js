@@ -3,7 +3,7 @@ import Logo from '../../logo'
 
 describe('Logo', () => {
 	test('renders correctly', () => {
-	  const wrapper = mount(Logo)
-	  expect(wrapper.element).toMatchSnapshot()
+		const wrapper = mount(Logo)
+	  	expect(wrapper.element).toMatchSnapshot()
 	})
 })

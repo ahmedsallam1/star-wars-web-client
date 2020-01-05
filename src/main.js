@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
+import apolloProvider from './graphql/apolloClient'
 import logo from './components/logo.vue'
 import magicButton from './components/magicButton.vue'
 import content from './components/content.vue'
@@ -20,4 +21,5 @@ Vue.component('magic-content', content)
 new Vue({
   render: h => h(App),
   store,
+  apolloProvider
 }).$mount('#app')

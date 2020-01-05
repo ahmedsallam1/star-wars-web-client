@@ -35,6 +35,7 @@
 			fetch: function (newVal) {
 				if (newVal) {
 					this.load();
+					console.log('aa')
 				}
 			}
 		},

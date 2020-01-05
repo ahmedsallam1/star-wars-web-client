@@ -10,7 +10,12 @@
 		</div>
 		<div id="most-appeared-species">
 			<h2 class="question">What species appeared in the most number StarWars films?</h2>
-			<h2 class="answer">{{ mostAppearedSpecies }}</h2>
+			<h2 class="answer">
+				<span v-for="species in mostAppearedSpecies" :key="species.name">
+					<p>{{ species.name }} ({{species.peopleCount}})</p>
+				</span>
+				<p v-if="!mostAppearedSpecies.length">...</p>
+			</h2>
 		</div>
 		<div id="largest-number-pilots">
 			<h2 class="question">What planet in StarWars universe provided largest number of vehicle pilots?</h2>

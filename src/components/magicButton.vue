@@ -27,8 +27,16 @@
 		}),
 		methods: {
 			...mapActions({
-				'setFetch': 'Statistics/setFetch'
+				'setFetch': 'Statistics/setFetch',
+				'load': 'Statistics/load',
 			})
+		},
+		watch: {
+			fetch: function (newVal) {
+				if (newVal) {
+					this.load();
+				}
+			}
 		},
 	}
 </script>

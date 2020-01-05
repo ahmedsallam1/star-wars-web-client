@@ -5,26 +5,44 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-brands-svg-icons": "^5.12.0",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
     "@fortawesome/vue-fontawesome": "^0.1.9",
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.13",
+    "apollo-link-http": "^1.5.16",
+    "axios": "^0.19.0",
     "core-js": "^3.4.4",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
     "vue": "^2.6.10",
+    "vue-apollo": "^3.0.2",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
+    "@vue/test-utils": "^1.0.0-beta.30",
+    "babel-core": "^7.0.0-0",
     "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "jest": "^24.9.0",
+    "jest-serializer-vue": "^2.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "vue-jest": "^3.0.5",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -44,5 +62,24 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
+  }
 }

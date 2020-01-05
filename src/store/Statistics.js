@@ -1,8 +1,10 @@
+import Api from '../libraries/Api'
+
 export default {
     namespaced: true,
     state: {
         fetch: false,
-        longestCrawl: 'static',
+        longestCrawl: '...',
         mostAppearedCharacter: 'static',
         mostAppearedSpecies: 'static',
         largestNumberPilots: 'static',
@@ -15,7 +17,7 @@ export default {
             return state.longestCrawl;
         },
         mostAppearedCharacter(state) {
-            return state.longestCrawl;
+            return state.mostAppearedCharacter;
         },
         mostAppearedSpecies(state) {
             return state.mostAppearedSpecies;
@@ -30,10 +32,33 @@ export default {
 
             return fetch;
         },
+        ['SET_LONGEST_CRAWL'](state, longestCrawl) {
+            state.longestCrawl = longestCrawl;
+
+            return longestCrawl;
+        },
     },
     actions: {
         setFetch ({commit}, value) {
             commit('SET_FETCH', value);
+        },
+
+        load ({dispatch}){
+            dispatch('fetchLongestCrawl')
+        },
+
+        fetchLongestCrawl ({commit}) {
+            return Api
+                .get('/api/films', {
+                    params: {
+                        'longest': 'openingCrawl',
+                    }
+                })
+                .then((response) => {
+                    if (response.data) {
+                        commit('SET_LONGEST_CRAWL', response.data.data.title)
+                    }
+                })
         }
     }
 }

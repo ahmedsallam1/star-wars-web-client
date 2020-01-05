@@ -19,5 +19,5 @@ Vue.component('magic-content', content)
 
 new Vue({
   render: h => h(App),
-  store
+  store,
 }).$mount('#app')

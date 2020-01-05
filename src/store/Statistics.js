@@ -1,15 +1,16 @@
 import Api from '../libraries/Api'
 import apolloProvider from '../graphql/apolloClient'
 import {GET_MOST_APPEARED_CHARACTER} from '../graphql/query/film'
+import {GET_MOST_APPEARED_SPECIES} from '../graphql/query/species'
 
 export default {
     namespaced: true,
     state: {
         fetch: false,
         longestCrawl: '...',
-        mostAppearedCharacter: 'static',
-        mostAppearedSpecies: 'static',
-        largestNumberPilots: 'static',
+        mostAppearedCharacter: '...',
+        mostAppearedSpecies: [],
+        largestNumberPilots: '...',
     },
     getters: {
         fetch(state) {
@@ -44,6 +45,11 @@ export default {
 
             return mostAppearedCharacter;
         },
+        ['SET_MOST_APPEARED_SPECIES'](state, mostAppearedSpecies) {
+            state.mostAppearedSpecies = mostAppearedSpecies;
+
+            return mostAppearedSpecies;
+        },
     },
     actions: {
         setFetch ({commit}, value) {
@@ -53,6 +59,7 @@ export default {
         load ({dispatch}){
             dispatch('fetchLongestCrawl')
             dispatch('fetchMostAppearedCharacter')
+            dispatch('fetchMostAppearedSpecies')
         },
 
         fetchLongestCrawl ({commit}) {
@@ -78,8 +85,16 @@ export default {
                         commit('SET_MOST_APPEARED_CHARACTER', response.data.character.name)
                     }
                 })
-                .catch((e) => {
-                    console.log(e)
+        },
+
+        fetchMostAppearedSpecies ({commit}) {
+            return apolloProvider
+                .defaultClient
+                .query({ query: GET_MOST_APPEARED_SPECIES })
+                .then((response) => {
+                    if (response.data) {
+                        commit('SET_MOST_APPEARED_SPECIES', response.data.species)
+                    }
                 })
         }
     }
